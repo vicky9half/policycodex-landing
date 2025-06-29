@@ -1,27 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Free GDPR Privacy Policy Generator | PolicyCodex</title>
-  <meta name="description" content="Generate a free GDPR policy in 60 seconds.">
-  <style>
-    body{font:16px/1.5 sans-serif;max-width:600px;margin:40px auto;}
-    input,button{padding:10px;font-size:16px;}
-    footer{margin-top:40px;font-size:12px;color:#666;text-align:center;}
-  </style>
-</head>
-<body>
-  <h1>Free GDPR Privacy Policy Generator</h1>
-  <form id="gen">
-    <input type="email" placeholder="Your email" required>
-    <button>Generate Policy</button>
+<!-- Coming Soon Section -->
+<section id="coming-soon" style="
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:4rem 1rem;
+  text-align:center;
+  background:#f8f9fa;
+  color:#333;
+">
+  <h1 style="font-size:2.5rem; margin-bottom:0.5rem;">
+    Something useful is coming soon…
+  </h1>
+  <p style="font-size:1.1rem; max-width:30rem; margin-bottom:1.5rem;">
+    We’re building our Free GDPR Privacy Policy Generator to save you hours of legal headaches. 
+    Leave your email and we’ll let you know the moment it’s ready—no spam, promise.
+  </p>
+  <form action="https://your-form-handler.com/subscribe" method="POST" style="display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center;">
+    <input 
+      type="email" 
+      name="email" 
+      placeholder="you@example.com" 
+      required 
+      style="
+        padding:0.7rem 1rem;
+        font-size:1rem;
+        border:1px solid #ccc;
+        border-radius:4px;
+        min-width:240px;
+      "
+    />
+    <button 
+      type="submit" 
+      style="
+        padding:0.7rem 1.2rem;
+        background:#0070f3;
+        color:white;
+        font-size:1rem;
+        border:none;
+        border-radius:4px;
+        cursor:pointer;
+      "
+    >Notify Me</button>
   </form>
-  <footer>Powered by PolicyCodex.ai</footer>
-  <script>
-    document.getElementById('gen').addEventListener('submit', e => {
-      e.preventDefault();
-      alert('🎉 Policy generated! (demo only)');
-    });
-  </script>
-</body>
+</section>
+
 </html>
