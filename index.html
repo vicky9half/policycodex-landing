@@ -1,30 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Site Under Maintenance Please Be Patient</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 5rem;
-      background: #f9f9f9;
-    }
-    h1 {
-      font-size: 2rem;
-      color: #444;
-    }
-    p {
-      color: #777;
-    }
-  </style>
-</head>
-<body>
-  <h1>Site Under Maintenance.</h1>
-  <h1>We're working on something new.</h1>
-  <p>We apologize for the inconvenience caused by the delays.</p>
-  <p>Please check back soon thank you.</p>
- 
-</body>
-</html>
+// File: app/page.tsx
+
+"use client";
+
+import { useState } from "react";
+
+export default function HomePage() {
+  const [url, setUrl] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState("");
+
+  async function handleScan(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    setResult("");
+
+    const res = await fetch("/api/scan", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url }),
+    });
+
+    const data = await res.json();
+    setResult(data.message || "Scan complete.");
+    setLoading(false);
+  }
+
+  return (
+    <main className="max-w-2xl mx-auto mt-20 p-6 bg-white shadow rounded-xl">
+      <h1 className="text-3xl font-bold mb-4">PolicyCodex</h1>
+      <p className="mb-6 text-gray-600">
+        Enter your website to scan for GDPR / ADA compliance risks.
+      </p>
+
+      <form onSubmit={handleScan} className="space-y-4">
+        <input
+          type="url"
+          required
+          placeholder="https://example.com"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          className="w-full border border-gray-300 p-2 rounded"
+        />
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+        >
+          {loading ? "Scanning..." : "Run Compliance Scan"}
+        </button>
+      </form>
+
+      {result && <p className="mt-6 text-green-600">{result}</p>}
+    </main>
+  );
+}
 
